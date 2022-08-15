@@ -1,8 +1,7 @@
-import json
+from classes import PowerPlant, PowerInterval
 from api import get_power_intervals
 from lib import interpolate_power_intervals, sum_power_intervals
-from classes import PowerPlant, PowerInterval
-from datetime import datetime
+import json
 import csv
 import os
 
@@ -35,7 +34,8 @@ def get_power_plants():
         return power_plants
 
 
-def format_output(power_intervals: PowerInterval, output_format: str):
+def format_output(power_intervals: list[PowerInterval], output_format: str):
+    # TODO : handle unexpected format
     final_list = [power_interval.get_dict() for power_interval in power_intervals]
     if output_format == "json":
         output_string = json.dumps(final_list)

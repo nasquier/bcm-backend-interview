@@ -13,7 +13,7 @@ def get_power_intervals(
 ) -> list[PowerInterval]:
     method = power_plant.method.lower()
 
-    # TODO : Handle exceptions
+    # TODO : Handle exceptions and check if parameters are valid
     if method == "hawes":
         return get_power_hawes(from_date, to_date)
     elif method == "barnsley":
