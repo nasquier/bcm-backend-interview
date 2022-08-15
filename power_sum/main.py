@@ -1,4 +1,4 @@
-from api import get_power
+from api import get_power_intervals
 from classes import PowerPlant
 from datetime import datetime
 import csv
@@ -28,4 +28,4 @@ with open(power_plant_file, "r") as csvfile:
     ]
 for power_plant in power_plants:
     print("---" + power_plant.name + "---")
-    get_power(power_plant, "01-01-2020", "02-01-2020")
+    power_intervals = get_power_intervals(power_plant, "01-01-2020", "02-01-2020")

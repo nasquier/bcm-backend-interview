@@ -1,1 +1,1 @@
-from api.get_power import get_power
+from api.get_power import get_power_intervals

@@ -3,7 +3,7 @@ import requests
 import json
 
 
-def get_power(
+def get_power_intervals(
     power_plant: PowerPlant, from_date: str, to_date: str
 ) -> list[PowerInterval]:
     method = power_plant.method.lower()
