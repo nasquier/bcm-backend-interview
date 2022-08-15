@@ -1,1 +1,1 @@
-from lib.tools import interpolate_power_intervals
+from lib.tools import interpolate_power_intervals, sum_power_intervals

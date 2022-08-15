@@ -1,5 +1,5 @@
 from api import get_power_intervals
-from lib import interpolate_power_intervals
+from lib import interpolate_power_intervals, sum_power_intervals
 from classes import PowerPlant
 from datetime import datetime
 import csv
@@ -28,7 +28,17 @@ with open(power_plant_file, "r") as csvfile:
         )
         for row in power_plant_iterator
     ]
+
+all_power_intervals = []
 for power_plant in power_plants:
-    print("---" + power_plant.name + "---")
     power_intervals = get_power_intervals(power_plant, "01-01-2020", "02-01-2020")
-    power_intervals = interpolate_power_intervals(power_intervals, power_plant.interval)
+    interpolate_power_intervals(power_intervals, power_plant.interval)
+    all_power_intervals += power_intervals
+
+summed_power_intervals = sum_power_intervals(all_power_intervals, 15 * 60)
+# print(
+#     [
+#         datetime.fromtimestamp(a.start).strftime("%H:%M:%S")
+#         for a in summed_power_intervals
+#     ]
+# )
