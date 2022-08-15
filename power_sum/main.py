@@ -51,6 +51,7 @@ def format_output(power_intervals: list[PowerInterval], output_format: str):
 
 
 def run():
+    # TODO: check prompt answers
     print("----- Somme des puissances des centrales par intervalles de 15 min -----")
     from_date = input(
         "\nDate de début des intervalles à surveiller au format DD-MM-YYYY (from) : "
@@ -58,7 +59,9 @@ def run():
     to_date = input(
         "\nDate de fin des intervalles à surveiller au format DD-MM-YYYY (to) : "
     )
-    output_format = input("\nFormat voulu en sortie (Pour le moment : json | csv) : ")
+    output_format = input(
+        "\nFormat voulu en sortie (format). Pour le moment json | csv : "
+    )
 
     power_plants = get_power_plants()
 
@@ -76,7 +79,7 @@ def run():
 
     # Format ouput
     output_string = format_output(summed_power_intervals, output_format)
-    print(output_string)
+    print("\n" + output_string)
 
 
 if __name__ == "__main__":
