@@ -1,4 +1,4 @@
-id,name,interval (sec),api_method
-0,Hounslow,900,hounslow
+id,name,interval(sec),api_method
+0,Hawes,900,hawes
 1,Barnsley,1800,barnsley
-2,Hawes,3600,hawes
+2,Hounslow,3600,hounslow
