@@ -1,3 +1,4 @@
+import json
 from api import get_power_intervals
 from lib import interpolate_power_intervals, sum_power_intervals
 from classes import PowerPlant
@@ -36,9 +37,17 @@ for power_plant in power_plants:
     all_power_intervals += power_intervals
 
 summed_power_intervals = sum_power_intervals(all_power_intervals, 15 * 60)
-# print(
-#     [
-#         datetime.fromtimestamp(a.start).strftime("%H:%M:%S")
-#         for a in summed_power_intervals
-#     ]
-# )
+
+final_list = [power_interval.get_dict() for power_interval in summed_power_intervals]
+output_format = "csv"
+if output_format == "json":
+    output_string = json.dumps(final_list)
+elif output_format == "csv":
+    output_string = ";".join(
+        ["start,end,power"]
+        + [
+            ",".join([str(row["start"]), str(row["end"]), str(row["power"])])
+            for row in final_list
+        ]
+    )
+print(output_string)
