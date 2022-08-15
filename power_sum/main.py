@@ -15,6 +15,7 @@ def get_power_plants():
     with open(power_plant_file, "r") as csvfile:
         power_plant_iterator = csv.reader(csvfile, delimiter=",", quotechar="|")
 
+        # TODO : Detect which column is the right one for each field, as we don't use a DB here
         # Get fields and skip to actual data
         col_id = 0
         col_name = 1
@@ -52,12 +53,12 @@ def format_output(power_intervals: PowerInterval, output_format: str):
 def run():
     print("----- Somme des puissances des centrales par intervalles de 15 min -----")
     from_date = input(
-        "\nDate de début des intervalles à surveiller au format DD-MM-YYYY (from): "
+        "\nDate de début des intervalles à surveiller au format DD-MM-YYYY (from) : "
     )
     to_date = input(
-        "\nDate de fin des intervalles à surveiller au format DD-MM-YYYY (to): "
+        "\nDate de fin des intervalles à surveiller au format DD-MM-YYYY (to) : "
     )
-    output_format = input("\nFormat voulu en sortie (Pour le moment : json | csv): ")
+    output_format = input("\nFormat voulu en sortie (Pour le moment : json | csv) : ")
 
     power_plants = get_power_plants()
 

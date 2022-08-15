@@ -1,5 +1,6 @@
 from classes import PowerInterval
 from datetime import datetime, timedelta
+from math import floor
 
 
 def interpolate_power_intervals(power_intervals: list[PowerInterval], interval: int):
@@ -21,7 +22,7 @@ def interpolate_power_intervals(power_intervals: list[PowerInterval], interval: 
                             last_end_datetime + timedelta(seconds=interval)
                         )
                     ),
-                    (last_interval.power + power_interval.power) / 2,
+                    floor((last_interval.power + power_interval.power) / 2),
                 ),
             )
             index += 1
