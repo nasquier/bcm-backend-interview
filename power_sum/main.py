@@ -50,12 +50,21 @@ def format_output(power_intervals: PowerInterval, output_format: str):
 
 
 def run():
+    print("----- Somme des puissances des centrales par intervalles de 15 min -----")
+    from_date = input(
+        "\nDate de début des intervalles à surveiller au format DD-MM-YYYY (from): "
+    )
+    to_date = input(
+        "\nDate de fin des intervalles à surveiller au format DD-MM-YYYY (to): "
+    )
+    output_format = input("\nFormat voulu en sortie (Pour le moment : json | csv): ")
+
     power_plants = get_power_plants()
 
     all_power_intervals = []
     for power_plant in power_plants:
         # Get power interavls for this power plant
-        power_intervals = get_power_intervals(power_plant, "01-01-2020", "02-01-2020")
+        power_intervals = get_power_intervals(power_plant, from_date, to_date)
         #  Look for missing data and interpolate
         interpolate_power_intervals(power_intervals, power_plant.interval)
         #  Stock them for later
@@ -65,7 +74,6 @@ def run():
     summed_power_intervals = sum_power_intervals(all_power_intervals, 15 * 60)
 
     # Format ouput
-    output_format = "json"
     output_string = format_output(summed_power_intervals, output_format)
     print(output_string)
 

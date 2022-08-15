@@ -3,6 +3,11 @@ import requests
 import json
 
 
+def is_valid_date(date: str):
+    # TODO : check if format is valid
+    return True
+
+
 def get_power_intervals(
     power_plant: PowerPlant, from_date: str, to_date: str
 ) -> list[PowerInterval]:
