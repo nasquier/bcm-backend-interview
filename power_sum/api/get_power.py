@@ -27,7 +27,7 @@ def get_power_hawes(from_date: str, to_date: str) -> list[PowerInterval]:
 
     unserialized_data = json.loads(response.text)
     formatted_data = [
-        PowerInterval(int(row["start"]), int(row["end"]), int(row["power"]))
+        PowerInterval(int(row["start"]), int(row["end"]), float(row["power"]))
         for row in unserialized_data
     ]
 
@@ -42,7 +42,7 @@ def get_power_barnsley(from_date: str, to_date: str) -> list[PowerInterval]:
 
     unserialized_data = json.loads(response.text)
     formatted_data = [
-        PowerInterval(int(row["start_time"]), int(row["end_time"]), int(row["value"]))
+        PowerInterval(int(row["start_time"]), int(row["end_time"]), float(row["value"]))
         for row in unserialized_data
     ]
 
@@ -59,7 +59,7 @@ def get_power_hounslow(from_date: str, to_date: str) -> list[PowerInterval]:
     splitted_lines.pop(0)
     unserialized_data = [line.split(",") for line in splitted_lines]
     formatted_data = [
-        PowerInterval(int(row[0]), int(row[1]), int(row[1]))
+        PowerInterval(int(row[0]), int(row[1]), float(row[1]))
         for row in unserialized_data
     ]
 

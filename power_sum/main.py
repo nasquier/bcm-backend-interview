@@ -31,4 +31,4 @@ with open(power_plant_file, "r") as csvfile:
 for power_plant in power_plants:
     print("---" + power_plant.name + "---")
     power_intervals = get_power_intervals(power_plant, "01-01-2020", "02-01-2020")
-    power_intervals = interpolate_power_intervals(power_intervals, 15 * 60)
+    power_intervals = interpolate_power_intervals(power_intervals, power_plant.interval)
