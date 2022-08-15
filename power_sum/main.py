@@ -26,8 +26,6 @@ with open(power_plant_file, "r") as csvfile:
         )
         for row in power_plant_iterator
     ]
-
-# from_date = datetime.fromtimestamp(from_stamp).strftime("%d-%m-%Y")
-# to_date = datetime.fromtimestamp(to_stamp).strftime("%d-%m-%Y")
 for power_plant in power_plants:
-    get_power(power_plant, "01-01-2020", "05-01-2020")
+    print("---" + power_plant.name + "---")
+    get_power(power_plant, "01-01-2020", "02-01-2020")
