@@ -64,7 +64,7 @@ def get_power_hounslow(from_date: str, to_date: str) -> list[PowerInterval]:
     splitted_lines.pop(0)
     unserialized_data = [line.split(",") for line in splitted_lines]
     formatted_data = [
-        PowerInterval(int(row[0]), int(row[1]), int(row[1]))
+        PowerInterval(int(row[0]), int(row[1]), int(row[2]))
         for row in unserialized_data
     ]
 
